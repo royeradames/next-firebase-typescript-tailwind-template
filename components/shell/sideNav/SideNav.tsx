@@ -1,11 +1,10 @@
 import React, { createContext, useContext } from "react";
-import Svg from "../../svg/";
+import { CogSvg, SignOutSvg, GitHubSvg, LogoSvg } from "../../svg";
 import NavBarOptions from "../navBar/NavBarOptions";
 import Link from "next/link";
 import { signOut } from "../../../utils/genericUtils";
-import LogoSvg from "../../../images/svg/logo.svg";
-import GitHubSvg from "../../svg/GitHubSvg";
 import useLocalStorage from "../../../utils/hooks/useLocalStorage";
+import { useRouter } from "next/router";
 
 const CollapsedContext = createContext(false);
 
@@ -55,20 +54,22 @@ type sideNavFooterProps = {
 
 const SideNavFooter = ({ setExpanded }: sideNavFooterProps) => {
   const collapsed = useContext(CollapsedContext);
+  const router = useRouter();
+
   return (
     <>
       <Link
         href="/settings"
         className="flex ml-1 items-end mt-auto px-1 no-underline text-blue-50 opacity-70 hover:opacity-100"
       >
-        <Svg.CogSvg />
+        <CogSvg />
         {!collapsed && <div className="pl-2">Settings</div>}
       </Link>
       <button
-        onClick={signOut}
+        onClick={() => signOut(router)}
         className="flex ml-1 items-center mt-3 px-1 pb-2 no-underline text-blue-50 opacity-70 hover:opacity-100 w-full text-left"
       >
-        <Svg.SignOutSvg />
+        <SignOutSvg />
         {!collapsed && <div className="pl-2">Sign Out</div>}
       </button>
       <hr></hr>

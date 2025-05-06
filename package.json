@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
+    "@headlessui/react": "^2.2.2",
     "@svgr/webpack": "^8.1.0",
     "firebase": "^9.23.0",
     "firebase-admin": "^11.11.1",

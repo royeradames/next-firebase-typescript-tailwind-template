@@ -1,8 +1,8 @@
-import { useRouter } from "next/navigation";
-import firebase from "../firebase/clientApp";
+import { auth } from "../firebase/clientApp";
+import { signOut as firebaseSignOut } from "firebase/auth";
+import { NextRouter } from "next/router";
 
-export const signOut = async () => {
-  await firebase.auth().signOut();
-  const router = useRouter();
+export const signOut = async (router: NextRouter) => {
+  await firebaseSignOut(auth);
   router.push("/");
 };

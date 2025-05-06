@@ -1,8 +1,8 @@
-import React from "react";
+import React, { type ReactNode } from "react";
 
 type Props = {
   title: string;
-  children: JSX.Element;
+  children: ReactNode;
 };
 
 export default function Content({ title, children }: Props) {

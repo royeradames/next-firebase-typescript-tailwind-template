@@ -1,9 +1,9 @@
-import React from "react";
+import React, { type ReactNode } from "react";
 import NavBar from "./navBar";
 import SideNav from "./sideNav/SideNav";
 
 type Props = {
-  children: JSX.Element;
+  children: ReactNode;
 };
 
 export default function Shell({ children }: Props) {

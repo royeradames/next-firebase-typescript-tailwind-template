@@ -1,5 +1,5 @@
-import React from "react";
-import Svg from "../../svg";
+import React, { type ReactNode } from "react";
+import { ChartPieSvg, UsersSvg, MessagesSvg, CogSvg, SignOutSvg } from "../../svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut } from "../../../utils/genericUtils";
@@ -14,34 +14,36 @@ export default function NavBarOptions({
   smallScreen = false,
   expanded = true,
 }: Props) {
+  const router = useRouter();
+
   return (
     <>
       <NavItem
         link="/"
-        svgIcon={<Svg.ChartPieSvg />}
+        svgIcon={<ChartPieSvg />}
         title="Dashboard"
         expanded={expanded}
       />
       <NavItem
         link="/users"
-        svgIcon={<Svg.UsersSvg />}
+        svgIcon={<UsersSvg />}
         title="Users"
         expanded={expanded}
       />
       <NavItem
         link="/messages"
-        svgIcon={<Svg.MessagesSvg />}
+        svgIcon={<MessagesSvg />}
         title="Messages"
         expanded={expanded}
       />
       {smallScreen && (
         <>
-          <NavItem link="/settings" svgIcon={<Svg.CogSvg />} title="Settings" />
+          <NavItem link="/settings" svgIcon={<CogSvg />} title="Settings" />
           <button
-            onClick={signOut}
+            onClick={() => signOut(router)}
             className="flex items-center no-underline text-blue-50 hover:text-blue-100 p-3 rounded-md w-full text-left"
           >
-            {<Svg.SignOutSvg />}
+            {<SignOutSvg />}
             <div className="font-bold pl-3">Sign Out</div>
           </button>
         </>
@@ -52,7 +54,7 @@ export default function NavBarOptions({
 
 type NavItemProps = {
   link: string;
-  svgIcon: JSX.Element;
+  svgIcon: ReactNode;
   title: string;
   expanded?: boolean;
 };
