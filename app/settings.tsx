@@ -1,24 +1,19 @@
 import React from "react";
 import Shell from "@/components/shell";
-import Content from "@/components/content/Content";
+import { cookies } from "next/headers";
 import { userIsLoggedIn } from "@/firebase/auth/utils";
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
 
-export default async function Messages() {
+export default async function Settings() {
   const cookiesStore = cookies();
   const authenticated = await userIsLoggedIn(cookiesStore);
 
   if (!authenticated) {
     redirect('/login')
   }
-  
   return (
     <Shell>
-      <Content title="Messages">
-        <>Messages</>
-      </Content>
+      <></>
     </Shell>
   );
 }
-
