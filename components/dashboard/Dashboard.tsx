@@ -1,9 +1,10 @@
-import React from "react";
-import Shell from "../shell";
-import Content from "../content/Content";
-import dynamic from 'next/dynamic';
+"use client";
 
-const DashboardContent = () => {
+import React from "react";
+import Shell from "@/components/shell";
+import Content from "@/components/content/Content";
+
+const Dashboard = () => {
   return (
     <>
       <Shell>
@@ -15,4 +16,4 @@ const DashboardContent = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(DashboardContent), { ssr: false });
+export default Dashboard;
