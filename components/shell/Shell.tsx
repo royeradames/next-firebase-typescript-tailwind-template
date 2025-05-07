@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type ReactNode } from "react";
 import NavBar from "./navBar";
 import SideNav from "./sideNav/SideNav";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type ReactNode } from "react";
 import { ChartPieSvg, UsersSvg, MessagesSvg, CogSvg, SignOutSvg } from "../../svg";
 import Link from "next/link";

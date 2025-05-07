@@ -1,11 +1,11 @@
 import React from "react";
-import Auth from "../components/auth";
-import { userIsLoggedIn } from "../firebase/auth/utils";
-import { LogoSvg } from "../components/svg";
+import Auth from "@/components/auth";
+import { userIsLoggedIn } from "@/firebase/auth/utils";
+import { LogoSvg } from "@/components/svg";
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-const LoginContent = async () => {
+const Login= async () => {
   const cookiesStore = cookies();
   const authenticated = await userIsLoggedIn(cookiesStore);
 
@@ -26,4 +26,4 @@ const LoginContent = async () => {
   );
 };
 
-export default LoginContent;
+export default Login;

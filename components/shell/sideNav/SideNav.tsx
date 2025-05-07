@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext } from "react";
 import { CogSvg, SignOutSvg, GitHubSvg, LogoSvg } from "../../svg";
 import NavBarOptions from "../navBar/NavBarOptions";
