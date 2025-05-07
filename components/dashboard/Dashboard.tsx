@@ -1,8 +1,9 @@
 import React from "react";
 import Shell from "../shell";
 import Content from "../content/Content";
+import dynamic from 'next/dynamic';
 
-export default function Dashboard() {
+const DashboardContent = () => {
   return (
     <>
       <Shell>
@@ -12,4 +13,6 @@ export default function Dashboard() {
       </Shell>
     </>
   );
-}
+};
+
+export default dynamic(() => Promise.resolve(DashboardContent), { ssr: false });

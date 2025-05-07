@@ -3,9 +3,10 @@ import Auth from "../components/auth";
 import { GetServerSidePropsContext } from "next";
 import nookies from "nookies";
 import { userIsLoggedIn } from "../firebase/auth/utils";
-import LogoSvg from "../images/svg/logo.svg";
+import { LogoSvg } from "../components/svg";
+import dynamic from 'next/dynamic';
 
-export default function Login() {
+const LoginContent = () => {
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center text-center overflow-hidden bg-cover bg-gradient-to-tr from-blue-300 to-indigo-800 py-6 sm:py-6">
@@ -17,7 +18,9 @@ export default function Login() {
       </div>
     </>
   );
-}
+};
+
+export default dynamic(() => Promise.resolve(LoginContent), { ssr: false });
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const cookies = nookies.get(ctx);
