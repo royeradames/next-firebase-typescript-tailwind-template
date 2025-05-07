@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next'
 import { AuthProvider } from "../firebase/auth/auth";
+import '../styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'RoyerAdames.com TechStack',
