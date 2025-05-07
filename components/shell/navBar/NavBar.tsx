@@ -2,7 +2,7 @@ import React from "react";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
 import NavBarOptions from "./NavBarOptions";
-import LogoSvg from "../../../images/svg/logo.svg";
+import { LogoSvg } from "../../svg";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);

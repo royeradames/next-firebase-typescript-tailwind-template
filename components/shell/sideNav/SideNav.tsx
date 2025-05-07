@@ -5,10 +5,12 @@ import Link from "next/link";
 import { signOut } from "../../../utils/genericUtils";
 import useLocalStorage from "../../../utils/hooks/useLocalStorage";
 import { useRouter } from "next/router";
+import dynamic from 'next/dynamic';
 
 const CollapsedContext = createContext(false);
 
-export default function SideNav() {
+// Create a client-side only version of the SideNavContent
+const SideNavContent = () => {
   const [expanded, setExpanded] = useLocalStorage("collapsed", false);
 
   return (
@@ -20,7 +22,10 @@ export default function SideNav() {
       </div>
     </CollapsedContext.Provider>
   );
-}
+};
+
+// Export a client-side only version of the SideNav
+export default dynamic(() => Promise.resolve(SideNavContent), { ssr: false });
 
 const SideNavHeader = () => {
   const collapsed = useContext(CollapsedContext);
