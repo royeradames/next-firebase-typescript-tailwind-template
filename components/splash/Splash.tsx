@@ -27,12 +27,11 @@ export default function Splash() {
                 </a>
               </div>
 
-              <Link href="/login">
-                <a>
-                  <button className="bg-blue-300 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full">
-                    Sign in
-                  </button>
-                </a>
+              <Link
+                href="/login"
+                className="bg-blue-300 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Sign in
               </Link>
             </div>
           </div>

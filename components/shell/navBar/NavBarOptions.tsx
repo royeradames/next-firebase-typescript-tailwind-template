@@ -1,5 +1,5 @@
-import React from "react";
-import Svg from "../../svg";
+import React, { type ReactNode } from "react";
+import { ChartPieSvg, UsersSvg, MessagesSvg, CogSvg, SignOutSvg } from "../../svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut } from "../../../utils/genericUtils";
@@ -14,36 +14,38 @@ export default function NavBarOptions({
   smallScreen = false,
   expanded = true,
 }: Props) {
+  const router = useRouter();
+
   return (
     <>
       <NavItem
         link="/"
-        svgIcon={<Svg.ChartPieSvg />}
+        svgIcon={<ChartPieSvg />}
         title="Dashboard"
         expanded={expanded}
       />
       <NavItem
         link="/users"
-        svgIcon={<Svg.UsersSvg />}
+        svgIcon={<UsersSvg />}
         title="Users"
         expanded={expanded}
       />
       <NavItem
         link="/messages"
-        svgIcon={<Svg.MessagesSvg />}
+        svgIcon={<MessagesSvg />}
         title="Messages"
         expanded={expanded}
       />
       {smallScreen && (
         <>
-          <NavItem link="/settings" svgIcon={<Svg.CogSvg />} title="Settings" />
-          <a
-            onClick={signOut}
-            className="flex items-center no-underline text-blue-50 hover:text-blue-100 p-3 rounded-md"
+          <NavItem link="/settings" svgIcon={<CogSvg />} title="Settings" />
+          <button
+            onClick={() => signOut(router)}
+            className="flex items-center no-underline text-blue-50 hover:text-blue-100 p-3 rounded-md w-full text-left"
           >
-            {<Svg.SignOutSvg />}
+            {<SignOutSvg />}
             <div className="font-bold pl-3">Sign Out</div>
-          </a>
+          </button>
         </>
       )}
     </>
@@ -52,7 +54,7 @@ export default function NavBarOptions({
 
 type NavItemProps = {
   link: string;
-  svgIcon: JSX.Element;
+  svgIcon: ReactNode;
   title: string;
   expanded?: boolean;
 };
@@ -60,15 +62,14 @@ type NavItemProps = {
 const NavItem = ({ link, svgIcon, title, expanded = true }: NavItemProps) => {
   const router = useRouter();
   return (
-    <Link href={link}>
-      <a
-        className={`flex items-center no-underline text-blue-50 hover:text-blue-100 p-3 rounded-md ${
-          isActivePage(link, router.pathname) ? "bg-indigo-800" : ""
-        }`}
-      >
-        {svgIcon}
-        {expanded && <div className="font-bold pl-3">{title}</div>}
-      </a>
+    <Link
+      href={link}
+      className={`flex items-center no-underline text-blue-50 hover:text-blue-100 p-3 rounded-md ${
+        isActivePage(link, router.pathname) ? "bg-indigo-800" : ""
+      }`}
+    >
+      {svgIcon}
+      {expanded && <div className="font-bold pl-3">{title}</div>}
     </Link>
   );
 };
