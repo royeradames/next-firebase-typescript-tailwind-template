@@ -1,12 +1,18 @@
 import React from "react";
 import Auth from "../components/auth";
-import { GetServerSidePropsContext } from "next";
-import nookies from "nookies";
 import { userIsLoggedIn } from "../firebase/auth/utils";
 import { LogoSvg } from "../components/svg";
-import dynamic from 'next/dynamic';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-const LoginContent = () => {
+const LoginContent = async () => {
+  const cookiesStore = cookies();
+  const authenticated = await userIsLoggedIn(cookiesStore);
+
+  if (authenticated) {
+    redirect('/');
+  }
+
   return (
     <>
       <div className="relative flex min-h-screen flex-col justify-center text-center overflow-hidden bg-cover bg-gradient-to-tr from-blue-300 to-indigo-800 py-6 sm:py-6">
@@ -20,18 +26,4 @@ const LoginContent = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(LoginContent), { ssr: false });
-
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const cookies = nookies.get(ctx);
-  const authenticated = await userIsLoggedIn(cookies);
-
-  if (authenticated) {
-    ctx.res.writeHead(302, { Location: "/" });
-    ctx.res.end();
-  }
-
-  return {
-    props: {},
-  };
-}
+export default LoginContent;
