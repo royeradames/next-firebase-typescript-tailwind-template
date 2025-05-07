@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export default async function Users() {
-  const cookiesStore = cookies();
+  const cookiesStore = await cookies();
   const authenticated = await userIsLoggedIn(cookiesStore);
 
   if (!authenticated) {

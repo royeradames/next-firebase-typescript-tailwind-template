@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSignInWithGoogle, useSignInWithGithub, useSignInWithEmailAndPassword, useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/clientApp";
-import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import nookies from "nookies";
 
 export default function SignInScreen() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
@@ -14,6 +16,20 @@ export default function SignInScreen() {
   const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth);
   const [signInWithEmail, emailUser, emailLoading, emailError] = useSignInWithEmailAndPassword(auth);
   const [createUserWithEmail, createUser, createLoading, createError] = useCreateUserWithEmailAndPassword(auth);
+
+  useEffect(() => {
+    // Check for existing token cookie
+    const token = nookies.get().token;
+    if (token) {
+      router.push('/');
+    }
+  }, [router]);
+
+  useEffect(() => {
+    if (googleUser || githubUser || emailUser || createUser) {
+      router.push('/');
+    }
+  }, [googleUser, githubUser, emailUser, createUser, router]);
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
