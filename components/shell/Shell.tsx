@@ -1,12 +1,13 @@
 import React, { type ReactNode } from "react";
 import NavBar from "./navBar";
 import SideNav from "./sideNav/SideNav";
+import dynamic from 'next/dynamic';
 
 type Props = {
   children: ReactNode;
 };
 
-export default function Shell({ children }: Props) {
+const ShellContent = ({ children }: Props) => {
   return (
     <>
       <div className="hidden h-screen md:grid grid-cols-custom-sidenav-layout">
@@ -19,4 +20,6 @@ export default function Shell({ children }: Props) {
       </div>
     </>
   );
-}
+};
+
+export default dynamic(() => Promise.resolve(ShellContent), { ssr: false });
