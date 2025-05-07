@@ -3,7 +3,7 @@
 import React, { type ReactNode } from "react";
 import { ChartPieSvg, UsersSvg, MessagesSvg, CogSvg, SignOutSvg } from "../../svg";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import { signOut } from "../../../utils/genericUtils";
 
 type Props = {
@@ -62,12 +62,12 @@ type NavItemProps = {
 };
 
 const NavItem = ({ link, svgIcon, title, expanded = true }: NavItemProps) => {
-  const router = useRouter();
+  const pathname = usePathname();
   return (
     <Link
       href={link}
       className={`flex items-center no-underline text-blue-50 hover:text-blue-100 p-3 rounded-md ${
-        isActivePage(link, router.pathname) ? "bg-indigo-800" : ""
+        isActivePage(link, pathname) ? "bg-indigo-800" : ""
       }`}
     >
       {svgIcon}

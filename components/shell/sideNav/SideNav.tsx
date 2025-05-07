@@ -6,7 +6,7 @@ import NavBarOptions from "../navBar/NavBarOptions";
 import Link from "next/link";
 import { signOut } from "../../../utils/genericUtils";
 import useLocalStorage from "../../../utils/hooks/useLocalStorage";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import dynamic from 'next/dynamic';
 
 const CollapsedContext = createContext(false);
