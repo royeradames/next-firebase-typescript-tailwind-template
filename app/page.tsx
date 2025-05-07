@@ -5,7 +5,7 @@ import Dashboard from '@/components/dashboard';
 import Splash from '@/components/splash';
 
 export default async function Home() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const authenticated = await userIsLoggedIn(cookieStore);
 
   return (
