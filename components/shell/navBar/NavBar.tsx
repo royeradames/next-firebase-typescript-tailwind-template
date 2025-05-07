@@ -1,8 +1,10 @@
+"use client";
+
 import React from "react";
 import { Transition } from "@headlessui/react";
 import { useState } from "react";
 import NavBarOptions from "./NavBarOptions";
-import { LogoSvg } from "../../svg";
+import { LogoSvg } from "@/components/svg";
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
