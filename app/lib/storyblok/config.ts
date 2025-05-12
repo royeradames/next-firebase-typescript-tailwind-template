@@ -1,4 +1,4 @@
-import { storyblokInit, apiPlugin, StoryblokClient } from "@storyblok/js";
+import { storyblokInit, apiPlugin } from "@storyblok/js";
 
 const { storyblokApi } = storyblokInit({
   accessToken: process.env.STORYBLOK_API_TOKEN,

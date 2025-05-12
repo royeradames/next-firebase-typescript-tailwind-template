@@ -6,15 +6,15 @@ export interface StoryblokComponent extends SbBlokData {
   [key: string]: SbBlokKeyDataTypes;
 }
 
-export interface BlogPostBlok extends SbBlokData {
+export interface Blok extends SbBlokData {
   _uid: string;
-  component: "blog_post";
+  component: string;
   title: string;
   content: StoryblokComponent[];
 }
 
 export interface StoryblokStory {
-  content: BlogPostBlok;
+  content: Blok;
   name: string;
   slug: string;
   full_slug: string;
