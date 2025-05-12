@@ -1,7 +1,7 @@
 "use client";
 
 import React, { type ReactNode } from "react";
-import { ChartPieSvg, UsersSvg, MessagesSvg, CogSvg, SignOutSvg } from "../../svg";
+import { ChartPieSvg, UsersSvg, MessagesSvg, CogSvg, SignOutSvg, StoryblokSvg } from "../../svg";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { signOut } from "../../../utils/genericUtils";
@@ -38,6 +38,12 @@ export default function NavBarOptions({
         title="Messages"
         expanded={expanded}
       />
+      <NavItem
+        link="/storyblok"
+        svgIcon={<StoryblokSvg />}
+        title="Storyblok"
+        expanded={expanded}
+      />
       {smallScreen && (
         <>
           <NavItem link="/settings" svgIcon={<CogSvg />} title="Settings" />
@@ -56,7 +62,7 @@ export default function NavBarOptions({
 
 type NavItemProps = {
   link: string;
-  svgIcon: ReactNode;
+  svgIcon?: ReactNode;
   title: string;
   expanded?: boolean;
 };

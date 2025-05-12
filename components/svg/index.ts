@@ -6,3 +6,4 @@ export { default as SignOutSvg } from "./SignOutSvg";
 export { default as MessagesSvg } from "./MessagesSvg";
 export { default as GitHubSvg } from "./GitHubSvg";
 export { default as LogoSvg } from "./LogoSvg";
+export { default as StoryblokSvg } from "./StoryblokSvg";
