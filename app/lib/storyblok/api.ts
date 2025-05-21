@@ -1,14 +1,14 @@
 import { ISbStoryParams } from "@storyblok/react";
 
 // Debug logging
-console.log("API Token:", process.env.STORYBLOK_API_TOKEN);
+console.log("API Token:", process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN);
 
 // Create a function to get the Storyblok API token
 const getStoryblokToken = () => {
-  const token = process.env.STORYBLOK_API_TOKEN;
+  const token = process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN;
   console.log("Token:", token);
   if (!token) {
-    throw new Error("STORYBLOK_API_TOKEN is not set in environment variables");
+    throw new Error("NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables");
   }
   return token;
 };
