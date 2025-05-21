@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
-    "@storyblok/js": "^3.4.0",
     "@storyblok/react": "^4.6.1",
     "@svgr/webpack": "^8.1.0",
     "firebase": "^9.23.0",
