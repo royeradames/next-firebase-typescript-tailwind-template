@@ -1,14 +1,12 @@
 import { ISbStoryParams } from "@storyblok/react";
 
-// Debug logging
-console.log("API Token:", process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN);
-
 // Create a function to get the Storyblok API token
 const getStoryblokToken = () => {
   const token = process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN;
-  console.log("Token:", token);
   if (!token) {
-    throw new Error("NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables");
+    throw new Error(
+      "NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables"
+    );
   }
   return token;
 };
@@ -42,7 +40,6 @@ export const getStories = async (params: ISbStoryParams = {}) => {
     const data = await response.json();
     return data.stories;
   } catch (error) {
-    console.error("Error fetching stories:", error);
     throw error;
   }
 };
@@ -76,7 +73,6 @@ export const getStory = async (slug: string, params: ISbStoryParams = {}) => {
     const data = await response.json();
     return data.story;
   } catch (error) {
-    console.error("Error fetching story:", error);
     throw error;
   }
 };
