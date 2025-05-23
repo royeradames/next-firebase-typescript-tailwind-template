@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack -p 8080 --experimental-https",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test": "cypress run"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.2",
@@ -27,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "autoprefixer": "^10.4.17",
+    "cypress": "^14.4.0",
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.3.2",
     "eslint-plugin-react": "^7.33.2",
