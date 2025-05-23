@@ -1,7 +1,8 @@
 "use client";
-import { StoryblokComponent } from "@storyblok/react";
+import React from "react";
+import { StoryblokComponent, SbBlokData } from "@storyblok/react";
 
-export default function StoryblokBody({ body }: { body: any[] }) {
+export default function StoryblokBody({ body }: { body: SbBlokData[] }) {
   return (
     <>
       {body?.map((blok) => (

@@ -32,3 +32,4 @@ yarn-error.log*
 .vercel
 
 certificates
+generate-storyblok-types.sh
