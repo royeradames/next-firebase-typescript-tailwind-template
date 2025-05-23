@@ -1,12 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { type ReactNode } from "react";
 import NavBar from "./navBar";
 import SideNav from "./sideNav/SideNav";
 
 type Props = {
-  children: JSX.Element;
+  children: ReactNode;
 };
 
-export default function Shell({ children }: Props) {
+const Shell = ({ children }: Props) => {
   return (
     <>
       <div className="hidden h-screen md:grid grid-cols-custom-sidenav-layout">
@@ -19,4 +21,6 @@ export default function Shell({ children }: Props) {
       </div>
     </>
   );
-}
+};
+
+export default Shell;

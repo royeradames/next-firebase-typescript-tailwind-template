@@ -1,14 +1,9 @@
-import ChartPieSvg from "./ChartPieSvg";
-import CogSvg from "./CogSvg";
-import FireSvg from "./FireSvg";
-import UsersSvg from "./UsersSvg";
-import SignOutSvg from "./SignOutSvg";
-import MessagesSvg from "./MessagesSvg";
-export default {
-  ChartPieSvg,
-  CogSvg,
-  FireSvg,
-  UsersSvg,
-  SignOutSvg,
-  MessagesSvg,
-};
+export { default as ChartPieSvg } from "./ChartPieSvg";
+export { default as CogSvg } from "./CogSvg";
+export { default as FireSvg } from "./FireSvg";
+export { default as UsersSvg } from "./UsersSvg";
+export { default as SignOutSvg } from "./SignOutSvg";
+export { default as MessagesSvg } from "./MessagesSvg";
+export { default as GitHubSvg } from "./GitHubSvg";
+export { default as LogoSvg } from "./LogoSvg";
+export { default as StoryblokSvg } from "./StoryblokSvg";

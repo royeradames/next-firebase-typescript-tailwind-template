@@ -1,8 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import hero from "../../images/hero.png";
-import LogoSvg from "../../images/svg/logo.svg";
+import { LogoSvg } from "@/components/svg";
 import GitHubSvg from "../svg/GitHubSvg";
 
 export default function Splash() {
@@ -27,12 +29,11 @@ export default function Splash() {
                 </a>
               </div>
 
-              <Link href="/login">
-                <a>
-                  <button className="bg-blue-300 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full">
-                    Sign in
-                  </button>
-                </a>
+              <Link
+                href="/login"
+                className="bg-blue-300 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full"
+              >
+                Sign in
               </Link>
             </div>
           </div>
@@ -50,7 +51,7 @@ export default function Splash() {
           </div>
 
           <div className="w-full xl:w-3/5 py-6 xl:pl-48 overflow-y-hidden">
-            <Image src={hero} />
+            <Image src={hero} alt="Hero image" />
           </div>
           <footer>
             <div className="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
