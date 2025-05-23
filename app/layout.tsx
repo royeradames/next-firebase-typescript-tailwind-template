@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next'
 import { AuthProvider } from "../firebase/auth/auth";
+import StoryblokProvider from "@/components/providers/StoryblokProvider";
 import '../styles/globals.css'
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ export default function RootLayout({
       <html lang="en">
         <body>
             <AuthProvider>
-                {children}
+                <StoryblokProvider>
+                    {children}
+                </StoryblokProvider>
             </AuthProvider>
         </body>
       </html>
