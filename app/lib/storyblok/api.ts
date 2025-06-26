@@ -4,9 +4,10 @@ import { ISbStoryParams } from "@storyblok/react";
 const getStoryblokToken = () => {
   const token = process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN;
   if (!token) {
-    throw new Error(
-      "NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables"
+    console.warn(
+      "NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables. Storyblok features will not work."
     );
+    return null;
   }
   return token;
 };
@@ -14,6 +15,12 @@ const getStoryblokToken = () => {
 // Create a function to fetch stories
 export const getStories = async (params: ISbStoryParams = {}) => {
   const token = getStoryblokToken();
+  if (!token) {
+    throw new Error(
+      "NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables"
+    );
+  }
+
   const queryParams = new URLSearchParams({
     token,
     version: "draft",
@@ -43,6 +50,12 @@ export const getStories = async (params: ISbStoryParams = {}) => {
 // Create a function to fetch a single story
 export const getStory = async (slug: string, params: ISbStoryParams = {}) => {
   const token = getStoryblokToken();
+  if (!token) {
+    throw new Error(
+      "NEXT_PUBLIC_STORYBLOK_API_TOKEN is not set in environment variables"
+    );
+  }
+
   const queryParams = new URLSearchParams({
     token,
     version: "draft",
